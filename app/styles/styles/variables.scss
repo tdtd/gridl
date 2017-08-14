@@ -1,0 +1,48 @@
+//Breakpoints
+$bp-xs-min: 1px;
+$bp-xs-max: 575px;
+
+$bp-sm-min: 576px;
+$bp-sm-max: 767px;
+
+$bp-md-min: 768px;
+$bp-md-max: 991px;
+
+$bp-lg-min: 992x;
+$bp-lg-max: 1199px;
+
+$bp-xl-min: 1200px;
+//Breakpoint Sizes
+$sizes: 'xs' 'sm' 'md' 'lg' 'xl';
+
+//Colors
+$textDark:    #333333;
+$textLight:      #fff;
+$default:        #ccc;
+$defaultDark:    #aaa;
+$primary:     #0c56da;
+$primaryDark: #073DA1;
+$success:     #06b26e;
+$successDark: #008D54;
+$warning:     #f0ad4e;
+$warningDark: #DE9226;
+$danger:      #dd4543;
+$dangerDark:  #C02420;
+
+//Button Sizes
+$btnMinHeight:   3rem;
+$btnSmMinHeight: 2rem;
+$btnLgMinHeight: 5rem;
+
+$btnFontSm:  .75rem;
+$btnFontRg:    1rem;
+$btnFontLg: 1.25rem;
+
+//Button colors to make
+$btnList:(
+  default: ($default, $defaultDark, $textDark),
+  primary: ($primary, $primaryDark, $textLight),
+  success: ($success, $successDark, $textLight),
+  warning: ($warning, $warningDark, $textLight),
+   danger: ( $danger,  $dangerDark, $textLight)
+);

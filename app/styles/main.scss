@@ -1,0 +1,42 @@
+// bower:scss
+// endbower
+
+//Normalize
+@import "styles/normalize.scss";
+//Multi-use Mixins
+@import "styles/clearfix.scss";
+//Variables
+@import "styles/variables.scss";
+//Layout
+@import "styles/breakpoints.scss";
+//@import "styles/columns.scss";
+@import "styles/grid.scss";
+@import "styles/flex-grid.scss";
+@import "styles/containers.scss";
+@import "styles/rows.scss";
+@import "styles/media.scss";
+//Style
+@import "styles/basicformat.scss";
+@import "styles/buttons.scss";
+@import "styles/hide.scss";
+@import "styles/templates.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.show-block{
+  width: 100%;
+  padding: 1rem;
+  @extend .card-primary;
+}
+
+/*
+  Columns
+*/
+/*
+  Generate Grid
+*/
+@include generate-grid-columns;
+@include generate-grid-offset;
+@include make-flex-grid;

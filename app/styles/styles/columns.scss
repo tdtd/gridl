@@ -1,0 +1,54 @@
+/*
+
+@mixin generate-col {
+  $col-list: null;
+  //Iterate through base col
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      flex: 0 0 auto;
+      flex-basis: percentage((($i/$columns)));
+      min-height: 1px;
+      flex-wrap: wrap;
+    }
+  }
+  //Iterate through each size col
+  @each $size in $sizes{ 
+    @include media-breakpoint-only($size){
+      @for $i from 1 through $columns {
+      .col-#{$size}-#{$i} {
+          flex: 0 0 auto;
+          flex-basis: percentage((($i/$columns)));
+          min-height: 1px;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  
+    .col-#{$size}{
+      flex: 1;
+      min-height: 1px;
+    }
+  }
+}
+
+
+@mixin generate-offset {
+  @for $i from 1 through $columns {
+      .col-offset-#{$i} {
+        margin-left: percentage((($i/$columns)));
+      }
+    }
+  
+  //Iterate through size offsets
+  @each $size in $sizes{ 
+    @include media-breakpoint-only($size){
+    @for $i from 1 through $columns {
+      .offset-#{$size}-#{$i} {
+        
+          margin-left: percentage((($i/$columns)));
+        }
+      }
+    }
+  }
+}
+*/

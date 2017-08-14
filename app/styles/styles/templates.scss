@@ -1,0 +1,272 @@
+/*
+ *
+    Full Body
+    Classes (head, left-sidebar, body, foot)
+
+    [     Header    ]
+    [Left][  Body   ]
+    [     Footer    ]
+ *
+ */
+.fullpage{
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 30rem minmax(5rem, 80%);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "head head"
+    "left-sidebar body"
+    "foot foot";
+  //Classes
+  > .head{
+    grid-area: head;
+  }
+  > .left-sidebar{
+    grid-area: left-sidebar;
+  }
+  > .body{
+    grid-area: body;
+  }
+  > .foot{
+    grid-area: foot;
+  }
+}
+/*
+ *
+    Full Body
+    Classes (head, left-sidebar, body, foot)
+
+    [     Header    ]
+    [Left][  Body   ]
+    [     Footer    ]
+ *
+ */
+.fullpage-mobile{
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 25rem minmax(5rem, 1fr);
+  grid-template-rows: auto repeat(auto-fill, minmax(1rem, 1fr)) auto;
+  grid-template-areas: 
+    "head head"
+    "left-sidebar body"
+    "foot foot";
+  //Classes
+  > .head{
+    grid-area: head;
+  }
+  > .left-sidebar{
+    display: flex;
+    flex-direction: column;
+    grid-area: left-sidebar;
+    > .menu-list{
+      position: sticky;
+      top: 2rem;
+    }
+  }
+  > .body{
+    max-width: 100%;
+    grid-area: body;
+    height: auto;
+  }
+  > .foot{
+    grid-area: foot;
+  }
+  @include media-breakpoint-max('sm') {
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "head head"
+    "body body"
+    "foot foot";
+    //Classes
+    .left-sidebar{
+      display: none;
+      position: fixed;
+      height: 100%;
+      top: -1px;
+      z-index: 1;
+      background: white;
+      @include shadow-block();
+      > .menu-list{
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+}
+
+/*
+ *
+    Cards
+ *
+ */
+.card-group{
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+/*
+  Standard Card
+  Classes (header, body, footer)
+*/
+.card{
+  @include shadow-block();
+  display: grid;
+  grid-column-end: span 1;
+  grid-template-areas: 
+    'header' 'header' 'header'
+    'body' 'body' 'body'
+    'footer' 'footer' 'footer';
+  //Classes
+  .header{
+    grid-area: header;
+  }
+  .body{
+    padding: 1rem;
+    grid-area: body;
+  }
+  .footer{
+    grid-area: footer;
+  }
+}
+
+
+/*
+ *
+    Media Image
+ *
+ */
+
+/*
+ *
+    Media with Image Left
+    Classes (Title, img, body, footer)
+ *
+ */
+.media-image{
+  @include shadow-block();
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: minmax(15rem, 20%) minmax(5rem, 80%);
+  grid-template-rows: auto minmax(5rem, 1fr) auto;
+  grid-template-areas: 
+    "img title"
+    "img body"
+    "img footer";
+  //Classes
+  .title{
+    padding: 0 1rem 0 1rem;
+    grid-area: title;
+  }
+  .img{
+    width: auto;
+    max-width: 100%;
+    height: auto; 
+    max-height: 100%;
+    grid-area: img;
+  }
+  .body{
+    padding: 0 1rem 0 1rem;
+    grid-area: body;
+  }
+  .footer{
+    padding: 0 1rem 0 1rem;
+    grid-area: footer;
+  }
+  @include media-breakpoint-max('sm') {
+    grid-template-areas: 
+    "title title"
+    "img body"
+    "footer footer";
+  }
+  @include media-breakpoint-max('xs') {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "img"
+      "title"
+      "body"
+      "footer";
+  }
+}
+
+
+/*
+ *
+    Media with Image Right
+    Classes (Title, img, body, footer)
+ *
+ */
+.media-image-right{
+  @extend .media-image;
+  grid-template-columns: minmax(5rem, 80%) minmax(15rem, 20%) ;
+  grid-template-areas: 
+    "title img"
+    "body img"
+    "footer img";
+  @include media-breakpoint-max('sm') {
+    grid-template-areas: 
+    "title title"
+    "body img"
+    "footer img";
+  }
+  @include media-breakpoint-max('xs') {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "img"
+      "title"
+      "body"
+      "footer";
+  }
+}
+
+/*
+ *
+    Menu Sidebar
+ *
+ */
+.menu-list{
+  display: grid;
+  padding-left: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  //Classes
+  > a , >a:visited{
+    text-decoration: none;
+    color: $textDark;
+  }
+  > a:hover, > a:active{
+    border-left: 1px solid $textDark;
+    padding-left: 1rem;
+  }
+  .menu-item{
+    padding: 1rem;
+    width: 100%;
+    //Classes
+    > a, >a:visited{
+      text-decoration: none;
+      color: $textDark;
+    }
+    > a:hover, > a:active, > a:focus{
+      border-left: 1px solid $textDark;
+      padding-left: 1rem;
+    }
+    .logo{
+      pointer-events: none;
+    }
+  }
+  .head{
+    order: -1;
+    padding: 1rem;
+    min-height: 5rem;
+    font-size: 2rem;
+    cursor: pointer !important;
+    //Classes
+    > a:hover, > a:active, > a:focus{
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+}

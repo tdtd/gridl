@@ -1,0 +1,41 @@
+//Columns and Rows
+$columns: 12;
+$rows: 8;
+
+@mixin generate-grid-columns {
+  //Iterate through base col
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      grid-column-end: span $i;
+    }
+  }
+  //Iterate through each size col
+  @each $size in $sizes{
+    @include media-breakpoint-min($size){
+    @for $i from 1 through $columns {
+      .col-#{$size}-#{$i} {
+          grid-column-end: span $i;
+        }
+      }
+    }
+  }
+
+}
+
+@mixin generate-grid-offset {
+  @for $i from 1 through $columns {
+    .col-offset-#{$i} {
+      grid-column-start: $i + 1;
+    }
+  }
+  //Iterate through each size col
+  @each $size in $sizes{
+    @include media-breakpoint-min($size){
+    @for $i from 1 through $columns {
+      .col-#{$size}-offset-#{$i} {
+          grid-column-start: $i + 1;
+        }
+      }
+    }
+  }
+}

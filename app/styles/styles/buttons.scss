@@ -1,0 +1,103 @@
+//Generate css for a basic button class
+@mixin button-basic(){
+  border: 1px solid transparent;
+  border-radius: 1px;
+  transition: all .2s ease-in-out;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+//
+@mixin button-flat($bg, $bgDark, $font){
+  @include button-basic();
+}
+
+@mixin button-normal($bg, $bgDark, $font){
+  @include button-basic();
+  @include shadow-button();
+}
+
+@mixin button-decoration($bg, $bgDark, $font){
+  background-color: $bg;
+  color: $font;
+  &:hover,{
+    background-color: $bgDark;
+  }
+  &:focus{
+    outline-color: transparent;
+  }
+  &.disabled, &:disabled{
+    background-color: fade-out($bg, .4);
+  }
+}
+
+@mixin button-outline($bg){
+  background-color: transparent;
+  color: $bg;
+  border-color: $bg;
+  &:hover, &:active &:focus{
+    background: $bg;
+    color: white;
+  }
+  &:focus {
+    outline-color: $bg;
+  }
+}
+
+//Generate Buttons
+@mixin generate-buttons {
+  @each $name, $colors in $btnList {
+    $bgcolor: nth($colors, 1);
+    $bgdarkcolor: nth($colors, 2);
+    $fontcolor: nth($colors, 3);
+    .btn-#{$name} {
+      @include button-decoration($bgcolor, $bgdarkcolor, $fontcolor);
+    }
+    .btn-outline-#{$name} {
+      @include button-outline($bgcolor);
+    }
+  }
+}
+
+
+.btn-sm{
+  @include button-normal($default, $defaultDark, $textDark);
+  font-size: $btnFontSm;
+  min-height: $btnSmMinHeight;
+}
+
+.btn{
+  @include button-normal($default, $defaultDark, $textDark);
+  font-size: $btnFontRg;
+  min-height: $btnMinHeight;
+}
+
+.btn-lg{
+  @include button-normal($default, $defaultDark, $textDark);
+  font-size:  $btnFontLg;
+  min-height: $btnLgMinHeight;
+}
+
+.btn-flat-sm {
+  @include button-flat($default, $defaultDark, $textDark);
+  font-size: $btnFontSm;
+  min-height: $btnSmMinHeight;
+}
+
+.btn-flat {
+  @include button-flat($default, $defaultDark, $textDark);
+  font-size: $btnFontRg;
+  min-height: $btnMinHeight;
+}
+
+.btn-flat-lg {
+  @include button-flat($default, $defaultDark, $textDark);
+  font-size: $btnFontLg;
+  min-height: $btnLgMinHeight;
+}
+
+@include generate-buttons;

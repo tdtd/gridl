@@ -1,0 +1,33 @@
+@mixin generate-hide-at-size {
+  @each $size in $sizes{ 
+    @include media-breakpoint-min($size){
+      .hide-at-#{$size}{
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin generate-hide-on-size {
+  @each $size in $sizes{ 
+    @include media-breakpoint-max($size){
+      .hide-on-#{$size}{
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin generate-hide-only-size {
+  @each $size in $sizes{ 
+    @include media-breakpoint-only($size){
+      .hide-only-#{$size}{
+        display: none;
+      }
+    }
+  }
+}
+
+@include generate-hide-at-size;
+@include generate-hide-on-size;
+@include generate-hide-only-size;
